@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "11985537513",
+    "project_id": "getfit-2e670",
+    "storage_bucket": "getfit-2e670.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11985537513:android:9f149605269da252b7a378",
+        "android_client_info": {
+          "package_name": "com.example.getfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11985537513-4dso2e61psh84crphmlcvq6e65je58re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.getfit",
+            "certificate_hash": "f1f6170dd10db10a8f284a5a7cd180304beddb6b"
+          }
+        },
+        {
+          "client_id": "11985537513-7ueskj4uk5nkao58l201a5on2nibl81k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJaaWzdGS8MJpyXs6LPenQ5EGbcMxiUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11985537513-7ueskj4uk5nkao58l201a5on2nibl81k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
