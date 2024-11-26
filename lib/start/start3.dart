@@ -45,7 +45,7 @@ class Start3 extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Image.asset(
-                    'assets/images/—Pngtree—jumping rope workout fitness girl_4619900.png',
+                    'assets/images/img_3.png',
                     height: 300,
                   ),
                 ],

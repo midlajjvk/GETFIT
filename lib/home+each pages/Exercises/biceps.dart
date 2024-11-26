@@ -5,38 +5,47 @@ class BicepsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            BicepsCard(
-              title: 'Concentration Curl',
-              videoPath: 'assets/videos/Biceps1.mp4',
-              description: 'The Concentration Curl is an isolation exercise '
-                  'that targets the biceps, specifically the bicep peak.',
-            ),
-            BicepsCard(
-              title: 'Cross Body Hammer Curl',
-              videoPath: 'assets/videos/Biceps2.mp4',
-              description:
-              ' This exercise targets the brachialis muscle, which lies underneath '
-                  'the biceps, helping to build overall arm size and strength.',
-            ),
-            BicepsCard(
-              title: 'Inner Biceps Curl',
-              videoPath: 'assets/videos/Biceps3.mp4',
-              description:
-              ' An inner biceps curl is a variation of the traditional bicep curl'
-                  ' that targets the inner part of the biceps, as well as the forearms.',
-            ),
-            BicepsCard(
-              title: 'Preacher Curl',
-              videoPath: 'assets/videos/Biceps4.mp4',
-              description:
-              ' The preacher curl is a bicep exercise that isolates '
-                  'the muscles of the upper arm, particularly the biceps brachii.',
-            ),
-          ],
+      body: Container(width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            children: [
+              BicepsCard(
+                title: 'Concentration Curl',
+                videoPath: 'assets/videos/Biceps1.mp4',
+                description: 'The Concentration Curl is an isolation exercise '
+                    'that targets the biceps, specifically the bicep peak.',
+              ),
+              BicepsCard(
+                title: 'Cross Body Hammer Curl',
+                videoPath: 'assets/videos/Biceps2.mp4',
+                description:
+                ' This exercise targets the brachialis muscle, which lies underneath '
+                    'the biceps, helping to build overall arm size and strength.',
+              ),
+              BicepsCard(
+                title: 'Inner Biceps Curl',
+                videoPath: 'assets/videos/Biceps3.mp4',
+                description:
+                ' An inner biceps curl is a variation of the traditional bicep curl'
+                    ' that targets the inner part of the biceps, as well as the forearms.',
+              ),
+              BicepsCard(
+                title: 'Preacher Curl',
+                videoPath: 'assets/videos/Biceps4.mp4',
+                description:
+                ' The preacher curl is a bicep exercise that isolates '
+                    'the muscles of the upper arm, particularly the biceps brachii.',
+              ),
+            ],
+          ),
         ),
       ),
     );

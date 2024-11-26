@@ -33,7 +33,7 @@ class _Step2State extends State<Step2> {
           width: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.white, Colors.white],
+              colors: [Colors.teal.shade100, Colors.teal.shade300],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -48,7 +48,7 @@ class _Step2State extends State<Step2> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange.shade700,
+                      color: Colors.teal,
                     ),
                   ),
                   SizedBox(height: 30),
@@ -82,7 +82,7 @@ class _Step2State extends State<Step2> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.teal.shade900,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -90,7 +90,7 @@ class _Step2State extends State<Step2> {
                 ),
                 child: Text(
                   "Next",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.white),
                 ),
               ),
               Row(
@@ -115,7 +115,7 @@ class _Step2State extends State<Step2> {
       height: 10,
       width: isActive ? 10 : 10,
       decoration: BoxDecoration(
-        color: isActive ? Colors.orange : Colors.grey.shade400,
+        color: isActive ? Colors.teal.shade900 : Colors.grey.shade400,
         borderRadius: BorderRadius.circular(5),
       ),
     );

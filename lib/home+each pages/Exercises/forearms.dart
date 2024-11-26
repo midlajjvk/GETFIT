@@ -5,38 +5,47 @@ class ForearmsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            ForearmsCard(
-              title: 'Wrist Roller',
-              videoPath: 'assets/videos/Forearms1.mp4',
-              description: 'The Wrist Roller is a classic forearm exercise that targets the flexor and extensor'
-                  ' muscles of the forearm, improving grip strength and wrist stability.',
-            ),
-            ForearmsCard(
-              title: 'One Arm Reverse Wrist Curl',
-              videoPath: 'assets/videos/Forearms2.mp4',
-              description:
-              ' The One-Arm Reverse Wrist Curl is an isolation exercise that strengthens the forearm extensors, '
-                  'the muscles responsible for extending the wrist and fingers',
-            ),
-            ForearmsCard(
-              title: 'One Arm Wrist Curl',
-              videoPath: 'assets/videos/Forearms3.mp4',
-              description:
-              'The One-Arm Wrist Curl is an isolation exercise that targets the forearm flexors,'
-                  ' the muscles responsible for bending the wrist.',
-            ),
-            ForearmsCard(
-              title: 'Seated Neutral Wrist Curl',
-              videoPath: 'assets/videos/Forearms4.mp4',
-              description:
-              'The Seated Neutral Wrist Curl is an isolation exercise that targets the forearm muscles, '
-                  'specifically the brachioradialis and other wrist flexor muscles.',
-            ),
-          ],
+      body: Container(width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            children: [
+              ForearmsCard(
+                title: 'Wrist Roller',
+                videoPath: 'assets/videos/Forearms1.mp4',
+                description: 'The Wrist Roller is a classic forearm exercise that targets the flexor and extensor'
+                    ' muscles of the forearm, improving grip strength and wrist stability.',
+              ),
+              ForearmsCard(
+                title: 'One Arm Reverse Wrist Curl',
+                videoPath: 'assets/videos/Forearms2.mp4',
+                description:
+                ' The One-Arm Reverse Wrist Curl is an isolation exercise that strengthens the forearm extensors, '
+                    'the muscles responsible for extending the wrist and fingers',
+              ),
+              ForearmsCard(
+                title: 'One Arm Wrist Curl',
+                videoPath: 'assets/videos/Forearms3.mp4',
+                description:
+                'The One-Arm Wrist Curl is an isolation exercise that targets the forearm flexors,'
+                    ' the muscles responsible for bending the wrist.',
+              ),
+              ForearmsCard(
+                title: 'Seated Neutral Wrist Curl',
+                videoPath: 'assets/videos/Forearms4.mp4',
+                description:
+                'The Seated Neutral Wrist Curl is an isolation exercise that targets the forearm muscles, '
+                    'specifically the brachioradialis and other wrist flexor muscles.',
+              ),
+            ],
+          ),
         ),
       ),
     );

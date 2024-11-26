@@ -1,60 +1,60 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:getfit/home+each%20pages/Home.dart';
 import 'package:getfit/signin.dart';
 import 'package:getfit/steps/step3.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: "AIzaSyDNJaaWzdGS8MJpyXs6LPenQ5EGbcMxiUg",
       appId: "1:11985537513:android:9f149605269da252b7a378",
-      messagingSenderId: "",
+      messagingSenderId: "11985537513",
       projectId: "getfit-2e670",
+      storageBucket: "getfit-2e670.appspot.com",
     ),
   );
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: RegPage(),
-      routes: {
-        '/home': (context) => Home(),
-        '/login': (context) => LogPage(),
-        'step3': (context) => Step3(),
-      },
-    );
-  }
+      getPages: [
+        GetPage(name: '/login', page: () => LogPage()),
+        GetPage(name: '/step3', page: () => Step3()),
+      ],
+    ),
+  );
 }
 
 class RegPage extends StatefulWidget {
-  const RegPage({super.key});
+  const RegPage({Key? key}) : super(key: key);
 
   @override
-  State<RegPage> createState() => _RegPageState();
+  _RegPageState createState() => _RegPageState();
 }
 
 class _RegPageState extends State<RegPage> {
-  final GlobalKey<FormState> formkey = GlobalKey();
-  bool showpass = true;
-  String? name;
+  final GlobalKey<FormState> formKey =
+      GlobalKey<FormState>(); // Unique key for this form
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  bool showPassword = true;
+  bool showConfirmPassword = true;
   String? email;
-  String? password;
-  String? cpassword;
 
   Future<String?> signup(
       {required String email, required String password}) async {
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return null;
     } catch (e) {
       return e.toString();
@@ -62,51 +62,47 @@ class _RegPageState extends State<RegPage> {
   }
 
   @override
+  void dispose() {
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.teal,
-              padding: EdgeInsets.only(top: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // IconButton(
-                  //   icon: Icon(Icons.arrow_back, color: Colors.white),
-                  //   onPressed: () {
-                  //     Navigator.pop(context);
-                  //   },
-                  // ),
-                  Text(
-                    'Registration',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+      body: Container( width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.teal.shade100, Colors.teal.shade300],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            Container(
-              child: Form(
-                key: formkey,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50, top: 80),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 30, left: 70, right: 70),
-                      child: TextFormField(
+          ),
+
+
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 170),
+                child: Form(
+                  key: formKey, // Ensure this is only used once
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Register here",
+                        style: TextStyle(
+                            fontSize: 32,
+                            color: Colors.teal,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      TextFormField(
                         decoration: InputDecoration(
-                          hintText: "Email",
                           labelText: "Email",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           prefixIcon: Icon(Icons.email),
                         ),
@@ -114,118 +110,133 @@ class _RegPageState extends State<RegPage> {
                           if (value == null || value.isEmpty) {
                             return "Enter your email";
                           }
-                          final emailRegex = RegExp(
-                            r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
-                          );
-                          if (!emailRegex.hasMatch(value)) {
+                          if (!RegExp(r"^[^@]+@[^@]+\.[^@]+").hasMatch(value)) {
                             return "Enter a valid email";
                           }
                           return null;
                         },
-                        onSaved: (value) {
-                          email = value;
-                        },
+                        onSaved: (value) => email = value,
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 30, left: 70, right: 70),
-                      child: TextFormField(
-                        obscureText: showpass,
-                        obscuringCharacter: "*",
+                      SizedBox(height: 20),
+                      TextFormField(
+                        controller: passwordController,
+                        obscureText: showPassword,
                         decoration: InputDecoration(
-                          hintText: "Password",
                           labelText: "Password",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           prefixIcon: Icon(Icons.lock),
                           suffixIcon: IconButton(
                             icon: Icon(
-                              showpass
+                              showPassword
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                             ),
                             onPressed: () {
                               setState(() {
-                                showpass = !showpass;
+                                showPassword = !showPassword;
                               });
                             },
                           ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return "Enter a valid password";
-                          } else if (value.length < 6) {
-                            return "Password must be at least 6 characters long";
+                            return "Enter a  password";
                           }
-                          password = value;
+                          if (value.length < 6) {
+                            return "Password must be at least 6 characters";
+                          }
                           return null;
                         },
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 30, left: 70, right: 70),
-                      child: TextFormField(
-                        obscureText: showpass,
-                        obscuringCharacter: "*",
+                      SizedBox(height: 20),
+                      TextFormField(
+                        controller: confirmPasswordController,
+                        obscureText: showConfirmPassword,
                         decoration: InputDecoration(
-                          hintText: "Confirm Password",
                           labelText: "Confirm Password",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           prefixIcon: Icon(Icons.lock),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              showConfirmPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                showConfirmPassword = !showConfirmPassword;
+                              });
+                            },
+                          ),
                         ),
                         validator: (value) {
-                          if (value != password) {
+                          if (value == null || value.isEmpty) {
+                            return "Confirm your password";
+                          }
+                          if (value != passwordController.text) {
                             return "Passwords do not match";
                           }
                           return null;
                         },
                       ),
-                    ),
-                    SizedBox(height: 30),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {
-                          formkey.currentState!.save();
-                          signup(email: email!, password: password!).then((value) {
-                            if (value == null) {
-                              Navigator.pushNamed(context, '/step3'
-                              );
-                            } else {
-                              Get.snackbar("Error", value);
-                            }
-                          });
-                        }
-                      },
-                      child: Text("Register"),
-                    ),
-
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: TextButton(
+                      SizedBox(height: 30),
+                      ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/login');
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                            signup(
+                              email: email!,
+                              password: passwordController.text,
+                            ).then((value) {
+                              if (value == null) {
+                                Get.to(Step3());
+                              } else {
+                                Get.snackbar(
+                                  "Error",
+                                  value,
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.redAccent,
+                                  colorText: Colors.white,
+                                );
+                              }
+                            });
+                          }
                         },
-                        child: Text("Already have an account? Login!"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.teal.shade900,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: Text(
+                          "Register",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          Get.to(LogPage());
+                        },
+                        child: Text(
+                          "Already have an account? Login!",
+                          style: TextStyle(color: Colors.teal.shade900),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+
     );
   }
 }

@@ -5,38 +5,47 @@ class TricepsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            TricepsCard(
-              title: 'Kickback',
-              videoPath: 'assets/videos/Triceps1.mp4',
-              description: 'The Triceps Kickback is  an excellent movement for isolating the triceps'
-                  ' and developing the overall strength and definition in the arm.',
-            ),
-            TricepsCard(
-              title: 'Single Arm Tricep Extension',
-              videoPath: 'assets/videos/Triceps2.mp4',
-              description:
-              ' The Single Arm Tricep Extension is an effective isolation exercise '
-                  'that targets the triceps, specifically focusing on the long head of the triceps muscle',
-            ),
-            TricepsCard(
-              title: 'Lying Tricep Extension',
-              videoPath: 'assets/videos/Triceps3.mp4',
-              description:
-              ' The Lying Tricep Extension, also known as the Skull Crusher, is a classic exercise '
-                  'for isolating the triceps, particularly the long head of the muscle.',
-            ),
-            TricepsCard(
-              title: 'Tate Press',
-              videoPath: 'assets/videos/Triceps4.mp4',
-              description:
-              ' The Tate Press is a unique triceps exercise that targets the triceps, specifically the '
-                  'long head and the medial head, while also engaging the chest and shoulders to some extent.',
-            ),
-          ],
+      body: Container(width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            children: [
+              TricepsCard(
+                title: 'Kickback',
+                videoPath: 'assets/videos/Triceps1.mp4',
+                description: 'The Triceps Kickback is  an excellent movement for isolating the triceps'
+                    ' and developing the overall strength and definition in the arm.',
+              ),
+              TricepsCard(
+                title: 'Single Arm Tricep Extension',
+                videoPath: 'assets/videos/Triceps2.mp4',
+                description:
+                ' The Single Arm Tricep Extension is an effective isolation exercise '
+                    'that targets the triceps, specifically focusing on the long head of the triceps muscle',
+              ),
+              TricepsCard(
+                title: 'Lying Tricep Extension',
+                videoPath: 'assets/videos/Triceps3.mp4',
+                description:
+                ' The Lying Tricep Extension, also known as the Skull Crusher, is a classic exercise '
+                    'for isolating the triceps, particularly the long head of the muscle.',
+              ),
+              TricepsCard(
+                title: 'Tate Press',
+                videoPath: 'assets/videos/Triceps4.mp4',
+                description:
+                ' The Tate Press is a unique triceps exercise that targets the triceps, specifically the '
+                    'long head and the medial head, while also engaging the chest and shoulders to some extent.',
+              ),
+            ],
+          ),
         ),
       ),
     );

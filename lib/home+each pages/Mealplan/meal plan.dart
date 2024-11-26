@@ -33,22 +33,31 @@ class MealPlan extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
-      body: ListView.builder(
-        itemCount: Meal.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(Meal[index]),
-            trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => getMealPlanScreen(Meal[index]),
-                ),
-              );
-            },
-          );
-        },
+      body: Container(width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: Meal.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(Meal[index]),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => getMealPlanScreen(Meal[index]),
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

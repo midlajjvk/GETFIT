@@ -33,23 +33,32 @@ class Tips extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
-      body: ListView.builder(
-        itemCount: tips.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(tips[index]),
-            trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
-            onTap: () {
-              // Navigate to the corresponding screen based on the tip
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => getTipDetailScreen(tips[index]),
-                ),
-              );
-            },
-          );
-        },
+      body: Container(width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: tips.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(tips[index]),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
+              onTap: () {
+                // Navigate to the corresponding screen based on the tip
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => getTipDetailScreen(tips[index]),
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

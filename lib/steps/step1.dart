@@ -24,7 +24,7 @@ class Step1 extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.white, Colors.white],
+              colors: [Colors.teal.shade100, Colors.teal.shade300],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -43,10 +43,10 @@ class Step1 extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-                  Image.asset(
-                    'assets/images/step1.png',
-                    height: 300,
-                  ),
+                  // Image.asset(
+                  //   '',
+                  //   height: 300,
+                  // ),
                 ],
               ),
               Text(
@@ -69,7 +69,7 @@ class Step1 extends StatelessWidget {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Step2()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.teal.shade900,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -77,7 +77,7 @@ class Step1 extends StatelessWidget {
                 ),
                 child: Text(
                   "Get Started",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.white),
                 ),
               ),
               Row(
@@ -102,7 +102,7 @@ class Step1 extends StatelessWidget {
       height: 10,
       width: isActive ? 10 : 10,
       decoration: BoxDecoration(
-        color: isActive ? Colors.orange : Colors.grey.shade400,
+        color: isActive ? Colors.teal.shade900 : Colors.grey.shade400,
         borderRadius: BorderRadius.circular(5),
       ),
     );

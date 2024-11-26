@@ -106,174 +106,183 @@ class _Step3ScreenState extends State<Step3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: const Text(
-                    "Step 3 of 3",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.orange,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: const Text(
-                    "Personal Details",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Center(
-                  child: const Text(
-                    "Let us know about you to speed up the result.\n Get fit with your personal workout plan!",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: 30),
 
-                // Full Name TextField
-                const Text(
-                  "Full Name",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: fullNameController,
-                  decoration: const InputDecoration(
-                    prefixText: "👤 ",
-                    prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
-                    hintText: "Enter your full name",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    border: UnderlineInputBorder(),
-                  ),
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-
-                // Birthday TextField
-                const Text(
-                  "Birthday",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: dobController,
-                  decoration: const InputDecoration(
-                    prefixText: "📅 ",
-                    prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
-                    hintText: "Enter your birthday",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    border: UnderlineInputBorder(),
-                  ),
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-
-                // Height TextField
-                const Text(
-                  "Height",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: heightController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    prefixText: "cm ",
-                    prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
-                    hintText: "Enter your height",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    border: UnderlineInputBorder(),
-                  ),
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-
-                // Weight TextField
-                const Text(
-                  "Weight",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: weightController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    prefixText: "kg ",
-                    prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
-                    hintText: "Enter your weight",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    border: UnderlineInputBorder(),
-                  ),
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-
-                // Gender Selection
-                const Text(
-                  "Gender",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    _buildGenderButton("Male"),
-                    const SizedBox(width: 10),
-                    _buildGenderButton("Female"),
-                  ],
-                ),
-                const SizedBox(height: 30),
-
-                // Start Button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      saveDataToFirestore();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+      body: Container(   width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal.shade100, Colors.teal.shade300],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
                     child: const Text(
-                      "Start",
+                      "Step 3 of 3",
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+                        fontSize: 25,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 30),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: const Text(
+                      "Personal Details",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Center(
+                    child: const Text(
+                      "Let us know about you to speed up the result.\n Get fit with your personal workout plan!",
+                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
 
-                // Indicator Row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    buildIndicator(false),
-                    buildIndicator(false),
-                    buildIndicator(true),
-                  ],
-                ),
-              ],
+                  // Full Name TextField
+                  const Text(
+                    "Full Name",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: fullNameController,
+                    decoration: const InputDecoration(
+                      prefixText: "👤 ",
+                      prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                      hintText: "Enter your full name",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: UnderlineInputBorder(),
+                    ),
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Birthday TextField
+                  const Text(
+                    "Birthday",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: dobController,
+                    decoration: const InputDecoration(
+                      prefixText: "📅 ",
+                      prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                      hintText: "Enter your birthday",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: UnderlineInputBorder(),
+                    ),
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Height TextField
+                  const Text(
+                    "Height",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: heightController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      prefixText: "cm ",
+                      prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                      hintText: "Enter your height",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: UnderlineInputBorder(),
+                    ),
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Weight TextField
+                  const Text(
+                    "Weight",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: weightController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      prefixText: "kg ",
+                      prefixStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                      hintText: "Enter your weight",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: UnderlineInputBorder(),
+                    ),
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Gender Selection
+                  const Text(
+                    "Gender",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      _buildGenderButton("Male"),
+                      const SizedBox(width: 10),
+                      _buildGenderButton("Female"),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+
+                  // Start Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        saveDataToFirestore();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal.shade900,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text(
+                        "Start",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+
+                  // Indicator Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      buildIndicator(false),
+                      buildIndicator(false),
+                      buildIndicator(true),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -294,15 +303,15 @@ class _Step3ScreenState extends State<Step3> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? Colors.orange : Colors.white,
+            color: isSelected ? Colors.teal.shade900 : Colors.white,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.orange),
+            border: Border.all(color: Colors.teal.shade900),
           ),
           child: Center(
             child: Text(
               gender,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.orange,
+                color: isSelected ? Colors.white : Colors.teal,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -320,7 +329,7 @@ class _Step3ScreenState extends State<Step3> {
       height: 10,
       width: isActive ? 10 : 10,
       decoration: BoxDecoration(
-        color: isActive ? Colors.orange : Colors.grey.shade400,
+        color: isActive ? Colors.teal.shade900 : Colors.grey,
         borderRadius: BorderRadius.circular(5),
       ),
     );
